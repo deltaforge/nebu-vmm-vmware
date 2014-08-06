@@ -1,0 +1,3 @@
+mvn clean package -Dmaven.test.skip=true
+mvn exec:java -Dexec.mainClass="nl.bitbrains.nebu.vmm.vmware.App" -Dexec.args="../nebu-vmm-vmware-config.xml" -Djava.util.logging.config.file="grizzlylogging"
+

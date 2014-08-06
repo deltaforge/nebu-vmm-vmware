@@ -1,0 +1,385 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>nl.bitbrains.nebu.vmm.vmware</groupId>
+  <artifactId>nebu-vmm-vmware</artifactId>
+  <packaging>jar</packaging>
+  <name>Nebu: VMware Extension</name>
+  <url>http://maven.apache.org</url>
+  <inceptionYear>2014</inceptionYear>
+  <developers>
+    <developer>
+      <id>1</id>
+      <name>Jesse Donkervliet</name>
+      <email>j.donkervliet@gmail.com</email>
+      <organization>Bitbrains</organization>
+      <organizationUrl>http://www.bitbrains.nl</organizationUrl>
+      <timezone>2</timezone>
+      <properties>
+        <github>jdonkervliet</github>
+      </properties>
+    </developer>
+    <developer>
+      <id>2</id>
+      <name>Tim Hegeman</name>
+      <email>tim.m.hegeman@gmail.com</email>
+      <organization>Bitbrains</organization>
+      <organizationUrl>http://www.bitbrains.nl</organizationUrl>
+      <timezone>2</timezone>
+      <properties>
+        <github>thegeman</github>
+      </properties>
+    </developer>
+    <developer>
+      <id>3</id>
+      <name>Stefan Hugtenburg</name>
+      <email>s.hugtenburg@gmail.com</email>
+      <organization>Bitbrains</organization>
+      <organizationUrl>http://www.bitbrains.nl</organizationUrl>
+      <timezone>2</timezone>
+      <properties>
+        <github>MrHug</github>
+      </properties>
+    </developer>
+  </developers>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>1.9.5</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-servlet</artifactId>
+      <version>2.8</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-grizzly2-http</artifactId>
+      <version>2.8</version>
+    </dependency>
+    <dependency>
+      <groupId>com.owlike</groupId>
+      <artifactId>genson</artifactId>
+      <version>0.99</version>
+    </dependency>
+    <dependency>
+      <groupId>nl.bitbrains.nebu.common</groupId>
+      <artifactId>nebu-common</artifactId>
+      <version>0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.test-framework.providers</groupId>
+      <artifactId>jersey-test-framework-provider-grizzly2</artifactId>
+      <version>2.8</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.vmware</groupId>
+      <artifactId>rest-api-schemas</artifactId>
+      <version>5.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.vmware</groupId>
+      <artifactId>vcloud-java-sdk</artifactId>
+      <version>5.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.vmware</groupId>
+      <artifactId>vijava</artifactId>
+      <version>5.1</version>
+    </dependency> 
+    <dependency>
+      <groupId>dom4j</groupId>
+      <artifactId>dom4j</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.3.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-module-junit4</artifactId>
+      <version>1.5.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-api-mockito</artifactId>
+      <version>1.5.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jdom</groupId>
+      <artifactId>jdom2</artifactId>
+      <version>2.0.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.0-rc1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.0-rc1</version>
+    </dependency>
+  </dependencies>
+  <organization>
+    <name>Bitbrains</name>
+    <url>http://www.bitbrains.nl/</url>
+  </organization>
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9.1</version>
+        <configuration></configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.12.1</version>
+        <configuration>
+          <configLocation>checkstyle.xml</configLocation>
+        </configuration>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>checkstyle</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.6.3.201306030806</version>
+        <configuration>
+          <executions>
+            <!-- Prepares the property pointing to the JaCoCo runtime agent which 
+              is passed as VM argument when Maven the Surefire plugin is executed. -->
+            <execution>
+              <id>pre-unit-test</id>
+              <goals>
+                <goal>prepare-agent</goal>
+              </goals>
+              <configuration>
+                <!-- Sets the path to the file which contains the execution data. -->
+                <destFile>${project.build.directory}/jacoco.exec</destFile>
+                <propertyName>sArgLine</propertyName>
+              </configuration>
+            </execution>
+            <!-- Ensures that the code coverage report for unit tests is created 
+              after unit tests have been run. -->
+            <execution>
+              <id>post-unit-test</id>
+              <phase>test</phase>
+              <goals>
+                <goal>report</goal>
+              </goals>
+              <configuration>
+                <!-- Sets the path to the file which contains the execution data. -->
+                <dataFile>${project.build.directory}/jacoco.exec</dataFile>
+              </configuration>
+            </execution>
+            <!-- The Executions required by unit tests are omitted. -->
+            <!-- Prepares the property pointing to the JaCoCo runtime agent which 
+              is passed as VM argument when Maven the Failsafe plugin is executed. -->
+            <execution>
+              <id>pre-integration-test</id>
+              <phase>pre-integration-test</phase>
+              <goals>
+                <goal>prepare-agent</goal>
+              </goals>
+              <configuration>
+                <!-- Sets the path to the file which contains the execution data. -->
+                <destFile>${project.build.directory}/jacoco-it.exec</destFile>
+                <!-- Sets the name of the property containing the settings for JaCoCo 
+                  runtime agent. -->
+                <propertyName>failsafeArgLine</propertyName>
+              </configuration>
+            </execution>
+            <!-- Ensures that the code coverage report for integration tests after 
+              integration tests have been run. -->
+            <execution>
+              <id>post-integration-test</id>
+              <phase>post-integration-test</phase>
+              <goals>
+                <goal>report</goal>
+              </goals>
+              <configuration>
+                <!-- Sets the path to the file which contains the execution data. -->
+                <dataFile>${project.build.directory}/jacoco-it.exec</dataFile>
+              </configuration>
+            </execution>
+          </executions>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.17</version>
+        <configuration>
+          <argLine>-XX:MaxPermSize=2048m ${sArgLine} </argLine>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>2.15</version>
+        <configuration>
+          <executions>
+            <!-- Ensures that both integration-test and verify goals of the Failsafe 
+              Maven plugin are executed. -->
+            <execution>
+              <id>integration-tests</id>
+              <goals>
+                <goal>integration-test</goal>
+                <goal>verify</goal>
+              </goals>
+              <configuration>
+                <!-- Sets the VM argument line used when integration tests are run. -->
+                <argLine>${failsafeArgLine}</argLine>
+              </configuration>
+            </execution>
+          </executions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9.1</version>
+        <configuration>
+          <show>private</show>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.6.3.201306030806</version>
+        <executions>
+          <!-- Prepares the property pointing to the JaCoCo runtime agent which 
+            is passed as VM argument when Maven the Surefire plugin is executed. -->
+          <execution>
+            <id>pre-unit-test</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+            <configuration>
+              <!-- Sets the path to the file which contains the execution data. -->
+              <destFile>${project.build.directory}/jacoco.exec</destFile>
+              <propertyName>sArgLine</propertyName>
+            </configuration>
+          </execution>
+          <!-- Ensures that the code coverage report for unit tests is created 
+            after unit tests have been run. -->
+          <execution>
+            <id>post-unit-test</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+            <configuration>
+              <!-- Sets the path to the file which contains the execution data. -->
+              <dataFile>${project.build.directory}/jacoco.exec</dataFile>
+            </configuration>
+          </execution>
+          <!-- The Executions required by unit tests are omitted. -->
+          <!-- Prepares the property pointing to the JaCoCo runtime agent which 
+            is passed as VM argument when Maven the Failsafe plugin is executed. -->
+          <execution>
+            <id>pre-integration-test</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+            <configuration>
+              <!-- Sets the path to the file which contains the execution data. -->
+              <destFile>${project.build.directory}/jacoco-it.exec</destFile>
+              <!-- Sets the name of the property containing the settings for JaCoCo 
+                runtime agent. -->
+              <propertyName>failsafeArgLine</propertyName>
+            </configuration>
+          </execution>
+          <!-- Ensures that the code coverage report for integration tests after 
+            integration tests have been run. -->
+          <execution>
+            <id>post-integration-test</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+            <configuration>
+              <!-- Sets the path to the file which contains the execution data. -->
+              <dataFile>${project.build.directory}/jacoco-it.exec</dataFile>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>2.15</version>
+        <executions>
+          <!-- Ensures that both integration-test and verify goals of the Failsafe 
+            Maven plugin are executed. -->
+          <execution>
+            <id>integration-tests</id>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+            <configuration>
+              <!-- Sets the VM argument line used when integration tests are run. -->
+              <argLine>${failsafeArgLine}</argLine>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.17</version>
+        <configuration>
+          <argLine>-XX:MaxPermSize=2048m ${sArgLine} </argLine>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.0</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <configuration>
+          <mainClass>nl.bitbrains.nebu.vmm.vmware.App</mainClass>
+          <arguments>
+            <argument>server</argument>
+          </arguments>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <version>0.1</version>
+</project>

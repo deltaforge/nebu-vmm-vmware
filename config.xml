@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+  <server>
+    <port>[port]</port>
+  </server>
+  <client type="vcloud">
+    <ip>[ip]</ip>
+    <port>[port]</port>
+    <auth>
+      <username>[username]</username>
+      <password>[password]</password>
+      <keyfile>[key file path]</keyfile>
+    </auth>
+  </client>
+  <client type="vsphere">
+    <ip>[ip]</ip>
+    <port>[port]</port>
+    <auth>
+      <username>[username]</username>
+      <password>[password]</password>
+      <keyfile>[key file path]</keyfile>
+    </auth>
+  </client>
+</properties>
